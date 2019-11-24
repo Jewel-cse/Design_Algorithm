@@ -16,16 +16,21 @@ void adjacent_list(int node){
         cout<<"\n";
     }
 }
-void bfs(int s)
+void bfs(int s,int ln)
 {
+    int cnt = 0;
     queue<int> q;
     q.push(s);
     visit[s]=true ;
     label[s] = 1;
+    if(ln ==1)  {
+        cout <<"\n"<< cnt+1;
+        return ;
+    }
     while(!q.empty())
     {
         int u = q.front();
-        cout<< u<<"  ";
+       // cout<< u<<"  ";
         q.pop();
         for(int a=0; a<adj[u].size(); a++)
         {
@@ -35,13 +40,15 @@ void bfs(int s)
                 q.push(b);
                 visit[b]=true;
                 label[b]=label[u]+1;
+                if(label[b]==ln)  cnt++;
             }
         }
     }
+    cout <<"\n"<< cnt;
 }
 int main()
 {
-    int node,v1,v2,i,j,edge,start;
+    int node,v1,v2,i,j,edge,start,label_no;
     cout<<"Enter number of node and edge : ";
     cin >> node>>edge;
     // input the graph/tree
@@ -53,12 +60,15 @@ int main()
     }
     cout<<"Enter the starting node for BFS : ";
     cin>>start;
-    //display the adjacent list
-    cout<<"The adjacent list :-"<<"\n";
-    adjacent_list(node);
+//    //display the adjacent list
+//    cout<<"The adjacent list :-"<<"\n";
+//    adjacent_list(node);
 
+    cout<<"Enter the label no : ";
+    cin>>label_no;
+    bfs(start,label_no);
 
-    cout<<"\nThe traverse order in BFS are : ";
-    bfs(start);
-    return 0;
+//    cout<<"\nThe traverse order in BFS are : ";
+//    bfs(start);
+//    return 0;
 }

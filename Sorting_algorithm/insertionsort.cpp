@@ -13,11 +13,12 @@ int main(){
     for(i =1;i<n;i++){
         key = a[i];
         j=i;
-        while(j>0 && a[j]<a[j-1]){
+        while(j>0 && key<a[j-1]){
             a[j]=a[j-1];
-            a[j-1] = key;
+            //a[j-1] = key;
             j--;
         }
+        a[j] = key;
     }
     //now array displayed
     for(i=0;i<n;i++){

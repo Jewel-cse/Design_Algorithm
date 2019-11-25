@@ -2,6 +2,7 @@
 #define sz 50
 using namespace std;
 int main(){
+
     int a[sz],i,j,n,key;
     cout<<"enter the number of element :";
     cin>> n;
